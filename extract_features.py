@@ -6,11 +6,23 @@ import numpy as np
 import sys
 import os
 from PIL import ImageFile
+from keras.layers import Dense, Activation, Flatten, Dropout, BatchNormalization
+
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+# base_model = VGG16(weights='imagenet', include_top=False, input_shape = (224,224,3))
+# x = Flatten()(base_model.output)
+# x = Dense(4096, activation='relu')(x)
+# x = Dropout(0.5)(x)
+# x = BatchNormalization()(x)
+# predictions = Dense(1024, activation = 'relu')(x)
+# model = Model(inputs=base_model.input, outputs=predictions)
+
 base_model = VGG16(weights='imagenet', include_top=True)
-out = base_model.get_layer("fc2").output
+base_model.summary()
+out = base_model.get_layer("predictions").output
 model = Model(inputs=base_model.input, outputs=out)
+model.summary()
 
 
 def save_feature(save_path, feature):
