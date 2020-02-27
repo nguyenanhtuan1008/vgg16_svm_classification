@@ -1,5 +1,4 @@
-https://github.com/nguyenanhtuan1008/Gender-Classification
-
+https://github.com/nguyenanhtuan1008/vgg16_svm_classification
 Step1: Generate data to text file
 (tensorflow-gpu) PS E:\acuity\tuan_experiment\svm\Gender-Classification> python .\generate_db.py gender_dataset_face db
 
